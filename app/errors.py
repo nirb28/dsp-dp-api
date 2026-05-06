@@ -1,0 +1,2 @@
+class DataProductError(ValueError):
+    pass

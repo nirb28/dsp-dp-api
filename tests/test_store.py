@@ -1,0 +1,42 @@
+from app.parser import parse_data_product_yaml
+from app.store import DataProductStore, ManifestRegistry
+
+
+VALID_YAML = """
+version: "1.0"
+project:
+  id: "dp_01"
+  name: "DP 01"
+connection:
+  type: "postgres"
+  properties:
+    database: "warehouse"
+mdl: |
+  {"models": []}
+semantics:
+  sql_pairs: |
+    []
+"""
+
+
+def test_store_persists_data_product(tmp_path):
+    parsed = parse_data_product_yaml(VALID_YAML)
+    store = DataProductStore(tmp_path)
+
+    record = store.upsert(parsed)
+    loaded = store.get("dp_01")
+
+    assert record.project.id == "dp_01"
+    assert loaded is not None
+    assert loaded.connection.properties["database"] == "warehouse"
+
+
+def test_manifest_registry_writes_project_manifest(tmp_path):
+    parsed = parse_data_product_yaml(VALID_YAML)
+    record = DataProductStore(tmp_path / "state").upsert(parsed)
+    registry = ManifestRegistry(tmp_path / "manifests")
+
+    path = registry.write_manifest(record)
+
+    assert path.exists()
+    assert path.name == "dp_01.json"

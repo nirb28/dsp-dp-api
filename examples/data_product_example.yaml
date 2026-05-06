@@ -1,0 +1,67 @@
+version: "1.0"
+project:
+  id: "dp_transaction_scoring_01"
+  name: "Transaction Scoring Data Product"
+  description: "Core data product for inference and scoring analytics."
+
+connection:
+  type: "postgres"
+  properties:
+    host: "inference-db.internal.corp"
+    port: 5432
+    database: "scoring_dw"
+    user: "${DB_USER}"
+    password: "${DB_PASSWORD}"
+    schema: "public"
+
+mdl: |
+  {
+    "models": [
+      {
+        "name": "customers",
+        "tableReference": "dim_customers",
+        "description": "Customer dimension table",
+        "columns": [
+          { "name": "customer_id", "type": "integer", "primaryKey": true },
+          { "name": "risk_segment", "type": "varchar" }
+        ]
+      },
+      {
+        "name": "transactions",
+        "tableReference": "fact_transactions",
+        "description": "Fact table for all scored transactions",
+        "columns": [
+          { "name": "transaction_id", "type": "integer", "primaryKey": true },
+          { "name": "customer_id", "type": "integer" },
+          { "name": "amount", "type": "double" },
+          { "name": "inference_score", "type": "double" }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "customer_transactions",
+        "from": "transactions",
+        "to": "customers",
+        "joinType": "many_to_one",
+        "condition": "transactions.customer_id = customers.customer_id"
+      }
+    ],
+    "metrics": [
+      {
+        "name": "average_inference_score",
+        "description": "Average model score across transactions",
+        "model": "transactions",
+        "measure": "avg(inference_score)"
+      }
+    ]
+  }
+
+semantics:
+  sql_pairs: |
+    [
+      {
+        "question": "What is the average transaction amount for high-risk customers?",
+        "sql": "SELECT avg(t.amount) FROM fact_transactions t JOIN dim_customers c ON t.customer_id = c.customer_id WHERE c.risk_segment = 'High'"
+      }
+    ]
