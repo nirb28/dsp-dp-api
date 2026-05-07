@@ -25,8 +25,37 @@ def test_parse_data_product_yaml_decodes_raw_json_strings():
     parsed = parse_data_product_yaml(VALID_YAML)
 
     assert parsed.document.project.id == "dp_transaction_scoring_01"
-    assert parsed.mdl_json == {"models": [], "relationships": [], "metrics": []}
+    assert parsed.mdl_json == {"models": [], "relationships": [], "metrics": [], "views": []}
     assert parsed.sql_pairs_json[0].question == "q"
+
+
+def test_parse_data_product_yaml_normalizes_simplified_mdl_shapes():
+    content = VALID_YAML.replace(
+        '{"models": [], "relationships": [], "metrics": []}',
+        """
+        {
+          "models": [
+            {
+              "name": "transactions",
+              "tableReference": "fact_transactions",
+              "columns": [{"name": "transaction_id", "type": "integer", "primaryKey": true}]
+            }
+          ],
+          "relationships": [{"name": "r", "from": "transactions", "to": "customers", "joinType": "many_to_one"}],
+          "metrics": [{"name": "m", "model": "transactions", "measure": "avg(score)"}]
+        }
+        """,
+    )
+
+    parsed = parse_data_product_yaml(content)
+
+    assert parsed.mdl_json["models"][0]["tableReference"] == {"table": "fact_transactions"}
+    assert parsed.mdl_json["models"][0]["primaryKey"] == "transaction_id"
+    assert parsed.mdl_json["relationships"][0]["models"] == ["transactions", "customers"]
+    assert parsed.mdl_json["relationships"][0]["joinType"] == "MANY_TO_ONE"
+    assert parsed.mdl_json["metrics"][0]["baseObject"] == "transactions"
+    assert parsed.mdl_json["metrics"][0]["measure"][0]["expression"] == "avg(score)"
+    assert parsed.mdl_json["metrics"][0]["timeGrain"] == []
 
 
 def test_parse_data_product_yaml_rejects_invalid_mdl_json():

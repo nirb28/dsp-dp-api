@@ -4,7 +4,9 @@
     "models": [
       {
         "name": "customers",
-        "tableReference": "dim_customers",
+        "tableReference": {
+          "table": "dim_customers"
+        },
         "description": "Customer dimension table",
         "columns": [
           {
@@ -16,11 +18,14 @@
             "name": "risk_segment",
             "type": "varchar"
           }
-        ]
+        ],
+        "primaryKey": "customer_id"
       },
       {
         "name": "transactions",
-        "tableReference": "fact_transactions",
+        "tableReference": {
+          "table": "fact_transactions"
+        },
         "description": "Fact table for all scored transactions",
         "columns": [
           {
@@ -40,15 +45,18 @@
             "name": "inference_score",
             "type": "double"
           }
-        ]
+        ],
+        "primaryKey": "transaction_id"
       }
     ],
     "relationships": [
       {
         "name": "customer_transactions",
-        "from": "transactions",
-        "to": "customers",
-        "joinType": "many_to_one",
+        "models": [
+          "transactions",
+          "customers"
+        ],
+        "joinType": "MANY_TO_ONE",
         "condition": "transactions.customer_id = customers.customer_id"
       }
     ],
@@ -56,10 +64,19 @@
       {
         "name": "average_inference_score",
         "description": "Average model score across transactions",
-        "model": "transactions",
-        "measure": "avg(inference_score)"
+        "baseObject": "transactions",
+        "dimension": [],
+        "measure": [
+          {
+            "name": "average_inference_score",
+            "type": "DOUBLE",
+            "expression": "avg(inference_score)"
+          }
+        ],
+        "timeGrain": []
       }
-    ]
+    ],
+    "views": []
   },
   "connectionInfo": {
     "host": "inference-db.internal.corp",
