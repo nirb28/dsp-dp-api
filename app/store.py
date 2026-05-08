@@ -1,3 +1,4 @@
+import base64
 import json
 from datetime import UTC, datetime
 from pathlib import Path
@@ -55,9 +56,16 @@ class ManifestRegistry:
         self.registry_dir.mkdir(parents=True, exist_ok=True)
 
     def write_manifest(self, record: DataProductRecord) -> Path:
+        manifest = dict(record.mdl)
+        manifest.setdefault("catalog", "wren")
+        manifest.setdefault("schema", record.connection.properties.get("schema", "public"))
+        manifest.setdefault("dataSource", record.connection.type)
+        manifest.setdefault("layoutVersion", 1)
+        manifest_str = json.dumps(manifest)
         payload = {
             "source": record.connection.type,
-            "manifest": record.mdl,
+            "manifest": manifest,
+            "manifestStr": base64.b64encode(manifest_str.encode("utf-8")).decode("utf-8"),
             "connectionInfo": record.connection.properties,
         }
         path = self._manifest_path(record.project.id)

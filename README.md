@@ -47,6 +47,18 @@ curl.exe -X POST http://localhost:8080/api/v1/data-products/dp_transaction_scori
   -d '{"question":"What is the average inference score?"}'
 ```
 
+The ask response contains a `query_id`. Use it to fetch the completed result:
+
+```powershell
+curl.exe http://localhost:8080/api/v1/data-products/dp_transaction_scoring_01/asks/{query_id}/result
+```
+
+Or stream intermediate reasoning/result events:
+
+```powershell
+curl.exe -N http://localhost:8080/api/v1/data-products/dp_transaction_scoring_01/asks/{query_id}/streaming-result
+```
+
 ## API Endpoints
 
 - `GET /health`
@@ -55,6 +67,8 @@ curl.exe -X POST http://localhost:8080/api/v1/data-products/dp_transaction_scori
 - `GET /api/v1/data-products/{project_id}`
 - `POST /api/v1/data-products/{project_id}/deploy`
 - `POST /api/v1/data-products/{project_id}/ask`
+- `GET /api/v1/data-products/{project_id}/asks/{query_id}/result`
+- `GET /api/v1/data-products/{project_id}/asks/{query_id}/streaming-result`
 
 ## Configuration
 

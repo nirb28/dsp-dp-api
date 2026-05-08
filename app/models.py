@@ -49,6 +49,7 @@ class DataProductRecord(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
     status: Literal["created", "deployed", "failed"] = "created"
+    mdl_hash: str | None = None
     error: str | None = None
 
 

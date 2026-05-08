@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
+from fastapi.responses import StreamingResponse
 from httpx import HTTPError
 
 from app.errors import DataProductError
@@ -40,7 +41,7 @@ async def deploy_data_product(
         raise HTTPException(status_code=404, detail="Data product was not found")
     try:
         manifest_registry.write_manifest(record)
-        await wren_client.deploy_semantics(record)
+        response = await wren_client.deploy_semantics(record)
     except HTTPError as exc:
         record.status = "failed"
         record.error = f"WrenAI service request failed: {exc}"
@@ -48,6 +49,7 @@ async def deploy_data_product(
         raise HTTPException(status_code=502, detail=record.error) from exc
 
     record.status = "deployed"
+    record.mdl_hash = response.get("id") or response.get("mdl_hash") or wren_client.mdl_hash(record)
     record.error = None
     store.save(record)
     return DeployResponse(project_id=record.project.id, status=record.status)
@@ -73,9 +75,42 @@ async def ask_data_product(
     store: DataProductStore = Depends(get_store),
     wren_client: WrenAIClient = Depends(get_wren_client),
 ):
-    if store.get(project_id) is None:
-        raise HTTPException(status_code=404, detail="Data product was not found")
+    record = _require_deployed_data_product(project_id, store)
     try:
-        return await wren_client.ask(project_id, request)
+        return await wren_client.ask(record, request)
     except HTTPError as exc:
         raise HTTPException(status_code=502, detail=f"WrenAI service request failed: {exc}") from exc
+
+
+@router.get("/{project_id}/ask/{query_id}/result")
+async def get_ask_result(
+    project_id: str,
+    query_id: str,
+    store: DataProductStore = Depends(get_store),
+    wren_client: WrenAIClient = Depends(get_wren_client),
+):
+    _require_deployed_data_product(project_id, store)
+    try:
+        return await wren_client.ask_result(query_id)
+    except HTTPError as exc:
+        raise HTTPException(status_code=502, detail=f"WrenAI service request failed: {exc}") from exc
+
+
+@router.get("/{project_id}/ask/{query_id}/streaming-result")
+async def get_ask_streaming_result(
+    project_id: str,
+    query_id: str,
+    store: DataProductStore = Depends(get_store),
+    wren_client: WrenAIClient = Depends(get_wren_client),
+):
+    _require_deployed_data_product(project_id, store)
+    return StreamingResponse(wren_client.ask_streaming_result(query_id), media_type="text/event-stream")
+
+
+def _require_deployed_data_product(project_id: str, store: DataProductStore) -> DataProductRecord:
+    record = store.get(project_id)
+    if record is None:
+        raise HTTPException(status_code=404, detail="Data product was not found")
+    if record.status != "deployed":
+        raise HTTPException(status_code=409, detail="Data product must be deployed before asking questions")
+    return record

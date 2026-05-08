@@ -1,3 +1,6 @@
+import base64
+import json
+
 from app.parser import parse_data_product_yaml
 from app.store import DataProductStore, ManifestRegistry
 
@@ -37,6 +40,14 @@ def test_manifest_registry_writes_project_manifest(tmp_path):
     registry = ManifestRegistry(tmp_path / "manifests")
 
     path = registry.write_manifest(record)
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    manifest = json.loads(base64.b64decode(payload["manifestStr"]).decode("utf-8"))
 
     assert path.exists()
     assert path.name == "dp_01.json"
+    assert payload["source"] == "postgres"
+    assert payload["connectionInfo"]["database"] == "warehouse"
+    assert manifest["catalog"] == "wren"
+    assert manifest["schema"] == "public"
+    assert manifest["dataSource"] == "postgres"
+    assert manifest["layoutVersion"] == 1

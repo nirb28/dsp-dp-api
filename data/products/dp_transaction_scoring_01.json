@@ -101,7 +101,8 @@
     }
   ],
   "created_at": "2026-05-06T01:15:27.677657Z",
-  "updated_at": "2026-05-07T22:29:10.620333Z",
+  "updated_at": "2026-05-08T02:08:19.593823Z",
   "status": "deployed",
+  "mdl_hash": "50c0449b3e739f11c9a8742e2e1b6c723f82999e76e2ba5a8aac923703817541",
   "error": null
 }
