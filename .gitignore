@@ -1,3 +1,6 @@
 .venv/*
 **/__pycache__/*
 *.log
+deploy/wren-launcher-windows.exe
+deploy/custom/.env
+deploy/original/.env

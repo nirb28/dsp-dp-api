@@ -62,11 +62,14 @@ class ManifestRegistry:
         manifest.setdefault("dataSource", record.connection.type)
         manifest.setdefault("layoutVersion", 1)
         manifest_str = json.dumps(manifest)
+        connection_info = dict(record.connection.properties)
+        if "port" in connection_info and connection_info["port"] is not None:
+            connection_info["port"] = str(connection_info["port"])
         payload = {
             "source": record.connection.type,
             "manifest": manifest,
             "manifestStr": base64.b64encode(manifest_str.encode("utf-8")).decode("utf-8"),
-            "connectionInfo": record.connection.properties,
+            "connectionInfo": connection_info,
         }
         path = self._manifest_path(record.project.id)
         path.write_text(json.dumps(payload, indent=2), encoding="utf-8")

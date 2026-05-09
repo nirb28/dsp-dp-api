@@ -14,6 +14,7 @@ connection:
   type: "postgres"
   properties:
     database: "warehouse"
+    port: 5432
 mdl: |
   {"models": []}
 semantics:
@@ -47,6 +48,7 @@ def test_manifest_registry_writes_project_manifest(tmp_path):
     assert path.name == "dp_01.json"
     assert payload["source"] == "postgres"
     assert payload["connectionInfo"]["database"] == "warehouse"
+    assert payload["connectionInfo"]["port"] == "5432"
     assert manifest["catalog"] == "wren"
     assert manifest["schema"] == "public"
     assert manifest["dataSource"] == "postgres"
