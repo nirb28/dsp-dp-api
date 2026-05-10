@@ -1,0 +1,164 @@
+version: '1.0'
+project:
+  id: dp_starburst_burstbank_01
+  name: Starburst Burstbank Data Product
+  description: Data product generated from Starburst Cloud sample.burstbank.
+connection:
+  type: trino
+  properties:
+    host: https://daljeetsm-free-cluster.trino.galaxy.starburst.io
+    port: '443'
+    catalog: sample
+    schema: burstbank
+    user: daljeetsm@gmail.com
+    password: dv6bVNxpdMFSVvc
+mdl: "{\n  \"catalog\": \"sample\",\n  \"schema\": \"burstbank\",\n  \"dataSource\"\
+  : \"trino\",\n  \"models\": [\n    {\n      \"name\": \"account\",\n      \"tableReference\"\
+  : {\n        \"catalog\": \"sample\",\n        \"schema\": \"burstbank\",\n    \
+  \    \"table\": \"account\"\n      },\n      \"description\": \"Starburst table\
+  \ sample.burstbank.account\",\n      \"columns\": [\n        {\n          \"name\"\
+  : \"custkey\",\n          \"type\": \"varchar\"\n        },\n        {\n       \
+  \   \"name\": \"acctkey\",\n          \"type\": \"varchar\"\n        },\n      \
+  \  {\n          \"name\": \"products\",\n          \"type\": \"varchar\"\n     \
+  \   },\n        {\n          \"name\": \"cc_number\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"cc_open_date\",\n          \"type\"\
+  : \"date\"\n        },\n        {\n          \"name\": \"cc_closed_date\",\n   \
+  \       \"type\": \"date\"\n        },\n        {\n          \"name\": \"cc_balance\"\
+  ,\n          \"type\": \"double\"\n        },\n        {\n          \"name\": \"\
+  cc_status\",\n          \"type\": \"varchar\"\n        },\n        {\n         \
+  \ \"name\": \"cc_default\",\n          \"type\": \"varchar\"\n        },\n     \
+  \   {\n          \"name\": \"mortgage_id\",\n          \"type\": \"varchar\"\n \
+  \       },\n        {\n          \"name\": \"mortgage_open_date\",\n          \"\
+  type\": \"date\"\n        },\n        {\n          \"name\": \"mortgage_closed_date\"\
+  ,\n          \"type\": \"date\"\n        },\n        {\n          \"name\": \"mortgage_balance\"\
+  ,\n          \"type\": \"double\"\n        },\n        {\n          \"name\": \"\
+  mortgage_status\",\n          \"type\": \"varchar\"\n        },\n        {\n   \
+  \       \"name\": \"mortgage_default\",\n          \"type\": \"varchar\"\n     \
+  \   },\n        {\n          \"name\": \"auto_loan_id\",\n          \"type\": \"\
+  varchar\"\n        },\n        {\n          \"name\": \"auto_loan_open_date\",\n\
+  \          \"type\": \"date\"\n        },\n        {\n          \"name\": \"auto_loan_closed_date\"\
+  ,\n          \"type\": \"date\"\n        },\n        {\n          \"name\": \"auto_loan_balance\"\
+  ,\n          \"type\": \"double\"\n        },\n        {\n          \"name\": \"\
+  auto_loan_status\",\n          \"type\": \"varchar\"\n        },\n        {\n  \
+  \        \"name\": \"auto_loan_default\",\n          \"type\": \"varchar\"\n   \
+  \     }\n      ]\n    },\n    {\n      \"name\": \"auto_loan_payment\",\n      \"\
+  tableReference\": {\n        \"catalog\": \"sample\",\n        \"schema\": \"burstbank\"\
+  ,\n        \"table\": \"auto_loan_payment\"\n      },\n      \"description\": \"\
+  Starburst table sample.burstbank.auto_loan_payment\",\n      \"columns\": [\n  \
+  \      {\n          \"name\": \"auto_loan_id\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"payment_date\",\n          \"type\"\
+  : \"date\"\n        },\n        {\n          \"name\": \"payment_amount\",\n   \
+  \       \"type\": \"double\"\n        },\n        {\n          \"name\": \"payment_due_date\"\
+  ,\n          \"type\": \"date\"\n        },\n        {\n          \"name\": \"delinquent_payment\"\
+  ,\n          \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"\
+  balance\",\n          \"type\": \"double\"\n        }\n      ]\n    },\n    {\n\
+  \      \"name\": \"credit_card_payment\",\n      \"tableReference\": {\n       \
+  \ \"catalog\": \"sample\",\n        \"schema\": \"burstbank\",\n        \"table\"\
+  : \"credit_card_payment\"\n      },\n      \"description\": \"Starburst table sample.burstbank.credit_card_payment\"\
+  ,\n      \"columns\": [\n        {\n          \"name\": \"cc_number\",\n       \
+  \   \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"payment_date\"\
+  ,\n          \"type\": \"date\"\n        },\n        {\n          \"name\": \"payment_amount\"\
+  ,\n          \"type\": \"double\"\n        },\n        {\n          \"name\": \"\
+  payment_due_date\",\n          \"type\": \"date\"\n        },\n        {\n     \
+  \     \"name\": \"delinquent_payment\",\n          \"type\": \"varchar\"\n     \
+  \   },\n        {\n          \"name\": \"balance\",\n          \"type\": \"double\"\
+  \n        }\n      ]\n    },\n    {\n      \"name\": \"customer\",\n      \"tableReference\"\
+  : {\n        \"catalog\": \"sample\",\n        \"schema\": \"burstbank\",\n    \
+  \    \"table\": \"customer\"\n      },\n      \"description\": \"Starburst table\
+  \ sample.burstbank.customer\",\n      \"columns\": [\n        {\n          \"name\"\
+  : \"custkey\",\n          \"type\": \"varchar\"\n        },\n        {\n       \
+  \   \"name\": \"first_name\",\n          \"type\": \"varchar\"\n        },\n   \
+  \     {\n          \"name\": \"last_name\",\n          \"type\": \"varchar\"\n \
+  \       },\n        {\n          \"name\": \"street\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"city\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"state\",\n          \"type\": \"\
+  varchar\"\n        },\n        {\n          \"name\": \"postcode\",\n          \"\
+  type\": \"varchar\"\n        },\n        {\n          \"name\": \"country\",\n \
+  \         \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"phone\"\
+  ,\n          \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"\
+  dob\",\n          \"type\": \"date\"\n        },\n        {\n          \"name\"\
+  : \"gender\",\n          \"type\": \"varchar\"\n        },\n        {\n        \
+  \  \"name\": \"married\",\n          \"type\": \"varchar\"\n        },\n       \
+  \ {\n          \"name\": \"ssn\",\n          \"type\": \"varchar\"\n        },\n\
+  \        {\n          \"name\": \"paycheck_dd\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"estimated_income\",\n          \"\
+  type\": \"double\"\n        },\n        {\n          \"name\": \"fico\",\n     \
+  \     \"type\": \"integer\"\n        },\n        {\n          \"name\": \"registration_date\"\
+  ,\n          \"type\": \"date\"\n        }\n      ]\n    },\n    {\n      \"name\"\
+  : \"customer_profile\",\n      \"tableReference\": {\n        \"catalog\": \"sample\"\
+  ,\n        \"schema\": \"burstbank\",\n        \"table\": \"customer_profile\"\n\
+  \      },\n      \"description\": \"Starburst table sample.burstbank.customer_profile\"\
+  ,\n      \"columns\": [\n        {\n          \"name\": \"profilekey\",\n      \
+  \    \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"custkey\"\
+  ,\n          \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"\
+  career\",\n          \"type\": \"varchar\"\n        },\n        {\n          \"\
+  name\": \"professional_status\",\n          \"type\": \"varchar\"\n        },\n\
+  \        {\n          \"name\": \"risk_appetite\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"customer_segment\",\n          \"\
+  type\": \"varchar\"\n        }\n      ]\n    },\n    {\n      \"name\": \"employee\"\
+  ,\n      \"tableReference\": {\n        \"catalog\": \"sample\",\n        \"schema\"\
+  : \"burstbank\",\n        \"table\": \"employee\"\n      },\n      \"description\"\
+  : \"Starburst table sample.burstbank.employee\",\n      \"columns\": [\n       \
+  \ {\n          \"name\": \"employee_id\",\n          \"type\": \"varchar\"\n   \
+  \     },\n        {\n          \"name\": \"first_name\",\n          \"type\": \"\
+  varchar\"\n        },\n        {\n          \"name\": \"last_name\",\n         \
+  \ \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"title\",\n\
+  \          \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"\
+  manger_id\",\n          \"type\": \"varchar\"\n        },\n        {\n         \
+  \ \"name\": \"start_date\",\n          \"type\": \"date\"\n        },\n        {\n\
+  \          \"name\": \"street\",\n          \"type\": \"varchar\"\n        },\n\
+  \        {\n          \"name\": \"city\",\n          \"type\": \"varchar\"\n   \
+  \     },\n        {\n          \"name\": \"state\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"postcode\",\n          \"type\":\
+  \ \"varchar\"\n        },\n        {\n          \"name\": \"country\",\n       \
+  \   \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"phone\"\
+  ,\n          \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"\
+  dob\",\n          \"type\": \"date\"\n        }\n      ]\n    },\n    {\n      \"\
+  name\": \"mortgage_payment\",\n      \"tableReference\": {\n        \"catalog\"\
+  : \"sample\",\n        \"schema\": \"burstbank\",\n        \"table\": \"mortgage_payment\"\
+  \n      },\n      \"description\": \"Starburst table sample.burstbank.mortgage_payment\"\
+  ,\n      \"columns\": [\n        {\n          \"name\": \"mortgage_id\",\n     \
+  \     \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"payment_date\"\
+  ,\n          \"type\": \"date\"\n        },\n        {\n          \"name\": \"payment_amount\"\
+  ,\n          \"type\": \"double\"\n        },\n        {\n          \"name\": \"\
+  payment_due_date\",\n          \"type\": \"date\"\n        },\n        {\n     \
+  \     \"name\": \"delinquent_payment\",\n          \"type\": \"varchar\"\n     \
+  \   },\n        {\n          \"name\": \"balance\",\n          \"type\": \"double\"\
+  \n        }\n      ]\n    },\n    {\n      \"name\": \"product_profile\",\n    \
+  \  \"tableReference\": {\n        \"catalog\": \"sample\",\n        \"schema\":\
+  \ \"burstbank\",\n        \"table\": \"product_profile\"\n      },\n      \"description\"\
+  : \"Starburst table sample.burstbank.product_profile\",\n      \"columns\": [\n\
+  \        {\n          \"name\": \"profilekey\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"custkey\",\n          \"type\": \"\
+  varchar\"\n        },\n        {\n          \"name\": \"cc_type\",\n          \"\
+  type\": \"varchar\"\n        },\n        {\n          \"name\": \"cc_rate\",\n \
+  \         \"type\": \"double\"\n        },\n        {\n          \"name\": \"mortgage_officer\"\
+  ,\n          \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"\
+  mortgage_duration\",\n          \"type\": \"integer\"\n        },\n        {\n \
+  \         \"name\": \"mortgage_residence_type\",\n          \"type\": \"varchar\"\
+  \n        },\n        {\n          \"name\": \"mortgage_purchase_price\",\n    \
+  \      \"type\": \"double\"\n        },\n        {\n          \"name\": \"mortgage_rate\"\
+  ,\n          \"type\": \"double\"\n        },\n        {\n          \"name\": \"\
+  auto_loan_officer\",\n          \"type\": \"varchar\"\n        },\n        {\n \
+  \         \"name\": \"auto_loan_duration\",\n          \"type\": \"integer\"\n \
+  \       },\n        {\n          \"name\": \"vehicle_type\",\n          \"type\"\
+  : \"varchar\"\n        },\n        {\n          \"name\": \"auto_purchase_price\"\
+  ,\n          \"type\": \"double\"\n        },\n        {\n          \"name\": \"\
+  auto_loan_rate\",\n          \"type\": \"double\"\n        }\n      ]\n    },\n\
+  \    {\n      \"name\": \"state_census\",\n      \"tableReference\": {\n       \
+  \ \"catalog\": \"sample\",\n        \"schema\": \"burstbank\",\n        \"table\"\
+  : \"state_census\"\n      },\n      \"description\": \"Starburst table sample.burstbank.state_census\"\
+  ,\n      \"columns\": [\n        {\n          \"name\": \"sumlev\",\n          \"\
+  type\": \"varchar\"\n        },\n        {\n          \"name\": \"region\",\n  \
+  \        \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"division\"\
+  ,\n          \"type\": \"varchar\"\n        },\n        {\n          \"name\": \"\
+  state\",\n          \"type\": \"varchar\"\n        },\n        {\n          \"name\"\
+  : \"name\",\n          \"type\": \"varchar\"\n        },\n        {\n          \"\
+  name\": \"abbreviation\",\n          \"type\": \"varchar\"\n        },\n       \
+  \ {\n          \"name\": \"popestimate2019\",\n          \"type\": \"varchar\"\n\
+  \        },\n        {\n          \"name\": \"popest18plus2019\",\n          \"\
+  type\": \"varchar\"\n        },\n        {\n          \"name\": \"pcnt_popest18plus\"\
+  ,\n          \"type\": \"varchar\"\n        }\n      ]\n    }\n  ],\n  \"relationships\"\
+  : [],\n  \"metrics\": [],\n  \"views\": []\n}"
+semantics:
+  sql_pairs: '[]'

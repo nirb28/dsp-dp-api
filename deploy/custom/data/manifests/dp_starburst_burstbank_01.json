@@ -1,0 +1,514 @@
+{
+  "source": "trino",
+  "manifest": {
+    "catalog": "sample",
+    "schema": "burstbank",
+    "dataSource": "trino",
+    "models": [
+      {
+        "name": "account",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "account"
+        },
+        "description": "Starburst table sample.burstbank.account",
+        "columns": [
+          {
+            "name": "custkey",
+            "type": "varchar"
+          },
+          {
+            "name": "acctkey",
+            "type": "varchar"
+          },
+          {
+            "name": "products",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_number",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_open_date",
+            "type": "date"
+          },
+          {
+            "name": "cc_closed_date",
+            "type": "date"
+          },
+          {
+            "name": "cc_balance",
+            "type": "double"
+          },
+          {
+            "name": "cc_status",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_default",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_id",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_open_date",
+            "type": "date"
+          },
+          {
+            "name": "mortgage_closed_date",
+            "type": "date"
+          },
+          {
+            "name": "mortgage_balance",
+            "type": "double"
+          },
+          {
+            "name": "mortgage_status",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_default",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_loan_id",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_loan_open_date",
+            "type": "date"
+          },
+          {
+            "name": "auto_loan_closed_date",
+            "type": "date"
+          },
+          {
+            "name": "auto_loan_balance",
+            "type": "double"
+          },
+          {
+            "name": "auto_loan_status",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_loan_default",
+            "type": "varchar"
+          }
+        ]
+      },
+      {
+        "name": "auto_loan_payment",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "auto_loan_payment"
+        },
+        "description": "Starburst table sample.burstbank.auto_loan_payment",
+        "columns": [
+          {
+            "name": "auto_loan_id",
+            "type": "varchar"
+          },
+          {
+            "name": "payment_date",
+            "type": "date"
+          },
+          {
+            "name": "payment_amount",
+            "type": "double"
+          },
+          {
+            "name": "payment_due_date",
+            "type": "date"
+          },
+          {
+            "name": "delinquent_payment",
+            "type": "varchar"
+          },
+          {
+            "name": "balance",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "credit_card_payment",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "credit_card_payment"
+        },
+        "description": "Starburst table sample.burstbank.credit_card_payment",
+        "columns": [
+          {
+            "name": "cc_number",
+            "type": "varchar"
+          },
+          {
+            "name": "payment_date",
+            "type": "date"
+          },
+          {
+            "name": "payment_amount",
+            "type": "double"
+          },
+          {
+            "name": "payment_due_date",
+            "type": "date"
+          },
+          {
+            "name": "delinquent_payment",
+            "type": "varchar"
+          },
+          {
+            "name": "balance",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "customer",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "customer"
+        },
+        "description": "Starburst table sample.burstbank.customer",
+        "columns": [
+          {
+            "name": "custkey",
+            "type": "varchar"
+          },
+          {
+            "name": "first_name",
+            "type": "varchar"
+          },
+          {
+            "name": "last_name",
+            "type": "varchar"
+          },
+          {
+            "name": "street",
+            "type": "varchar"
+          },
+          {
+            "name": "city",
+            "type": "varchar"
+          },
+          {
+            "name": "state",
+            "type": "varchar"
+          },
+          {
+            "name": "postcode",
+            "type": "varchar"
+          },
+          {
+            "name": "country",
+            "type": "varchar"
+          },
+          {
+            "name": "phone",
+            "type": "varchar"
+          },
+          {
+            "name": "dob",
+            "type": "date"
+          },
+          {
+            "name": "gender",
+            "type": "varchar"
+          },
+          {
+            "name": "married",
+            "type": "varchar"
+          },
+          {
+            "name": "ssn",
+            "type": "varchar"
+          },
+          {
+            "name": "paycheck_dd",
+            "type": "varchar"
+          },
+          {
+            "name": "estimated_income",
+            "type": "double"
+          },
+          {
+            "name": "fico",
+            "type": "integer"
+          },
+          {
+            "name": "registration_date",
+            "type": "date"
+          }
+        ]
+      },
+      {
+        "name": "customer_profile",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "customer_profile"
+        },
+        "description": "Starburst table sample.burstbank.customer_profile",
+        "columns": [
+          {
+            "name": "profilekey",
+            "type": "varchar"
+          },
+          {
+            "name": "custkey",
+            "type": "varchar"
+          },
+          {
+            "name": "career",
+            "type": "varchar"
+          },
+          {
+            "name": "professional_status",
+            "type": "varchar"
+          },
+          {
+            "name": "risk_appetite",
+            "type": "varchar"
+          },
+          {
+            "name": "customer_segment",
+            "type": "varchar"
+          }
+        ]
+      },
+      {
+        "name": "employee",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "employee"
+        },
+        "description": "Starburst table sample.burstbank.employee",
+        "columns": [
+          {
+            "name": "employee_id",
+            "type": "varchar"
+          },
+          {
+            "name": "first_name",
+            "type": "varchar"
+          },
+          {
+            "name": "last_name",
+            "type": "varchar"
+          },
+          {
+            "name": "title",
+            "type": "varchar"
+          },
+          {
+            "name": "manger_id",
+            "type": "varchar"
+          },
+          {
+            "name": "start_date",
+            "type": "date"
+          },
+          {
+            "name": "street",
+            "type": "varchar"
+          },
+          {
+            "name": "city",
+            "type": "varchar"
+          },
+          {
+            "name": "state",
+            "type": "varchar"
+          },
+          {
+            "name": "postcode",
+            "type": "varchar"
+          },
+          {
+            "name": "country",
+            "type": "varchar"
+          },
+          {
+            "name": "phone",
+            "type": "varchar"
+          },
+          {
+            "name": "dob",
+            "type": "date"
+          }
+        ]
+      },
+      {
+        "name": "mortgage_payment",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "mortgage_payment"
+        },
+        "description": "Starburst table sample.burstbank.mortgage_payment",
+        "columns": [
+          {
+            "name": "mortgage_id",
+            "type": "varchar"
+          },
+          {
+            "name": "payment_date",
+            "type": "date"
+          },
+          {
+            "name": "payment_amount",
+            "type": "double"
+          },
+          {
+            "name": "payment_due_date",
+            "type": "date"
+          },
+          {
+            "name": "delinquent_payment",
+            "type": "varchar"
+          },
+          {
+            "name": "balance",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "product_profile",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "product_profile"
+        },
+        "description": "Starburst table sample.burstbank.product_profile",
+        "columns": [
+          {
+            "name": "profilekey",
+            "type": "varchar"
+          },
+          {
+            "name": "custkey",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_type",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_rate",
+            "type": "double"
+          },
+          {
+            "name": "mortgage_officer",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_duration",
+            "type": "integer"
+          },
+          {
+            "name": "mortgage_residence_type",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_purchase_price",
+            "type": "double"
+          },
+          {
+            "name": "mortgage_rate",
+            "type": "double"
+          },
+          {
+            "name": "auto_loan_officer",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_loan_duration",
+            "type": "integer"
+          },
+          {
+            "name": "vehicle_type",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_purchase_price",
+            "type": "double"
+          },
+          {
+            "name": "auto_loan_rate",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "state_census",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "state_census"
+        },
+        "description": "Starburst table sample.burstbank.state_census",
+        "columns": [
+          {
+            "name": "sumlev",
+            "type": "varchar"
+          },
+          {
+            "name": "region",
+            "type": "varchar"
+          },
+          {
+            "name": "division",
+            "type": "varchar"
+          },
+          {
+            "name": "state",
+            "type": "varchar"
+          },
+          {
+            "name": "name",
+            "type": "varchar"
+          },
+          {
+            "name": "abbreviation",
+            "type": "varchar"
+          },
+          {
+            "name": "popestimate2019",
+            "type": "varchar"
+          },
+          {
+            "name": "popest18plus2019",
+            "type": "varchar"
+          },
+          {
+            "name": "pcnt_popest18plus",
+            "type": "varchar"
+          }
+        ]
+      }
+    ],
+    "relationships": [],
+    "metrics": [],
+    "views": [],
+    "layoutVersion": 1
+  },
+  "manifestStr": "eyJjYXRhbG9nIjogInNhbXBsZSIsICJzY2hlbWEiOiAiYnVyc3RiYW5rIiwgImRhdGFTb3VyY2UiOiAidHJpbm8iLCAibW9kZWxzIjogW3sibmFtZSI6ICJhY2NvdW50IiwgInRhYmxlUmVmZXJlbmNlIjogeyJjYXRhbG9nIjogInNhbXBsZSIsICJzY2hlbWEiOiAiYnVyc3RiYW5rIiwgInRhYmxlIjogImFjY291bnQifSwgImRlc2NyaXB0aW9uIjogIlN0YXJidXJzdCB0YWJsZSBzYW1wbGUuYnVyc3RiYW5rLmFjY291bnQiLCAiY29sdW1ucyI6IFt7Im5hbWUiOiAiY3VzdGtleSIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImFjY3RrZXkiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJwcm9kdWN0cyIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImNjX251bWJlciIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImNjX29wZW5fZGF0ZSIsICJ0eXBlIjogImRhdGUifSwgeyJuYW1lIjogImNjX2Nsb3NlZF9kYXRlIiwgInR5cGUiOiAiZGF0ZSJ9LCB7Im5hbWUiOiAiY2NfYmFsYW5jZSIsICJ0eXBlIjogImRvdWJsZSJ9LCB7Im5hbWUiOiAiY2Nfc3RhdHVzIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiY2NfZGVmYXVsdCIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogIm1vcnRnYWdlX2lkIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAibW9ydGdhZ2Vfb3Blbl9kYXRlIiwgInR5cGUiOiAiZGF0ZSJ9LCB7Im5hbWUiOiAibW9ydGdhZ2VfY2xvc2VkX2RhdGUiLCAidHlwZSI6ICJkYXRlIn0sIHsibmFtZSI6ICJtb3J0Z2FnZV9iYWxhbmNlIiwgInR5cGUiOiAiZG91YmxlIn0sIHsibmFtZSI6ICJtb3J0Z2FnZV9zdGF0dXMiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJtb3J0Z2FnZV9kZWZhdWx0IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiYXV0b19sb2FuX2lkIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiYXV0b19sb2FuX29wZW5fZGF0ZSIsICJ0eXBlIjogImRhdGUifSwgeyJuYW1lIjogImF1dG9fbG9hbl9jbG9zZWRfZGF0ZSIsICJ0eXBlIjogImRhdGUifSwgeyJuYW1lIjogImF1dG9fbG9hbl9iYWxhbmNlIiwgInR5cGUiOiAiZG91YmxlIn0sIHsibmFtZSI6ICJhdXRvX2xvYW5fc3RhdHVzIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiYXV0b19sb2FuX2RlZmF1bHQiLCAidHlwZSI6ICJ2YXJjaGFyIn1dfSwgeyJuYW1lIjogImF1dG9fbG9hbl9wYXltZW50IiwgInRhYmxlUmVmZXJlbmNlIjogeyJjYXRhbG9nIjogInNhbXBsZSIsICJzY2hlbWEiOiAiYnVyc3RiYW5rIiwgInRhYmxlIjogImF1dG9fbG9hbl9wYXltZW50In0sICJkZXNjcmlwdGlvbiI6ICJTdGFyYnVyc3QgdGFibGUgc2FtcGxlLmJ1cnN0YmFuay5hdXRvX2xvYW5fcGF5bWVudCIsICJjb2x1bW5zIjogW3sibmFtZSI6ICJhdXRvX2xvYW5faWQiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJwYXltZW50X2RhdGUiLCAidHlwZSI6ICJkYXRlIn0sIHsibmFtZSI6ICJwYXltZW50X2Ftb3VudCIsICJ0eXBlIjogImRvdWJsZSJ9LCB7Im5hbWUiOiAicGF5bWVudF9kdWVfZGF0ZSIsICJ0eXBlIjogImRhdGUifSwgeyJuYW1lIjogImRlbGlucXVlbnRfcGF5bWVudCIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImJhbGFuY2UiLCAidHlwZSI6ICJkb3VibGUifV19LCB7Im5hbWUiOiAiY3JlZGl0X2NhcmRfcGF5bWVudCIsICJ0YWJsZVJlZmVyZW5jZSI6IHsiY2F0YWxvZyI6ICJzYW1wbGUiLCAic2NoZW1hIjogImJ1cnN0YmFuayIsICJ0YWJsZSI6ICJjcmVkaXRfY2FyZF9wYXltZW50In0sICJkZXNjcmlwdGlvbiI6ICJTdGFyYnVyc3QgdGFibGUgc2FtcGxlLmJ1cnN0YmFuay5jcmVkaXRfY2FyZF9wYXltZW50IiwgImNvbHVtbnMiOiBbeyJuYW1lIjogImNjX251bWJlciIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogInBheW1lbnRfZGF0ZSIsICJ0eXBlIjogImRhdGUifSwgeyJuYW1lIjogInBheW1lbnRfYW1vdW50IiwgInR5cGUiOiAiZG91YmxlIn0sIHsibmFtZSI6ICJwYXltZW50X2R1ZV9kYXRlIiwgInR5cGUiOiAiZGF0ZSJ9LCB7Im5hbWUiOiAiZGVsaW5xdWVudF9wYXltZW50IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiYmFsYW5jZSIsICJ0eXBlIjogImRvdWJsZSJ9XX0sIHsibmFtZSI6ICJjdXN0b21lciIsICJ0YWJsZVJlZmVyZW5jZSI6IHsiY2F0YWxvZyI6ICJzYW1wbGUiLCAic2NoZW1hIjogImJ1cnN0YmFuayIsICJ0YWJsZSI6ICJjdXN0b21lciJ9LCAiZGVzY3JpcHRpb24iOiAiU3RhcmJ1cnN0IHRhYmxlIHNhbXBsZS5idXJzdGJhbmsuY3VzdG9tZXIiLCAiY29sdW1ucyI6IFt7Im5hbWUiOiAiY3VzdGtleSIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImZpcnN0X25hbWUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJsYXN0X25hbWUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJzdHJlZXQiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJjaXR5IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAic3RhdGUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJwb3N0Y29kZSIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImNvdW50cnkiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJwaG9uZSIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImRvYiIsICJ0eXBlIjogImRhdGUifSwgeyJuYW1lIjogImdlbmRlciIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogIm1hcnJpZWQiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJzc24iLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJwYXljaGVja19kZCIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImVzdGltYXRlZF9pbmNvbWUiLCAidHlwZSI6ICJkb3VibGUifSwgeyJuYW1lIjogImZpY28iLCAidHlwZSI6ICJpbnRlZ2VyIn0sIHsibmFtZSI6ICJyZWdpc3RyYXRpb25fZGF0ZSIsICJ0eXBlIjogImRhdGUifV19LCB7Im5hbWUiOiAiY3VzdG9tZXJfcHJvZmlsZSIsICJ0YWJsZVJlZmVyZW5jZSI6IHsiY2F0YWxvZyI6ICJzYW1wbGUiLCAic2NoZW1hIjogImJ1cnN0YmFuayIsICJ0YWJsZSI6ICJjdXN0b21lcl9wcm9maWxlIn0sICJkZXNjcmlwdGlvbiI6ICJTdGFyYnVyc3QgdGFibGUgc2FtcGxlLmJ1cnN0YmFuay5jdXN0b21lcl9wcm9maWxlIiwgImNvbHVtbnMiOiBbeyJuYW1lIjogInByb2ZpbGVrZXkiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJjdXN0a2V5IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiY2FyZWVyIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAicHJvZmVzc2lvbmFsX3N0YXR1cyIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogInJpc2tfYXBwZXRpdGUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJjdXN0b21lcl9zZWdtZW50IiwgInR5cGUiOiAidmFyY2hhciJ9XX0sIHsibmFtZSI6ICJlbXBsb3llZSIsICJ0YWJsZVJlZmVyZW5jZSI6IHsiY2F0YWxvZyI6ICJzYW1wbGUiLCAic2NoZW1hIjogImJ1cnN0YmFuayIsICJ0YWJsZSI6ICJlbXBsb3llZSJ9LCAiZGVzY3JpcHRpb24iOiAiU3RhcmJ1cnN0IHRhYmxlIHNhbXBsZS5idXJzdGJhbmsuZW1wbG95ZWUiLCAiY29sdW1ucyI6IFt7Im5hbWUiOiAiZW1wbG95ZWVfaWQiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJmaXJzdF9uYW1lIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAibGFzdF9uYW1lIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAidGl0bGUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJtYW5nZXJfaWQiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJzdGFydF9kYXRlIiwgInR5cGUiOiAiZGF0ZSJ9LCB7Im5hbWUiOiAic3RyZWV0IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiY2l0eSIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogInN0YXRlIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAicG9zdGNvZGUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJjb3VudHJ5IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAicGhvbmUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJkb2IiLCAidHlwZSI6ICJkYXRlIn1dfSwgeyJuYW1lIjogIm1vcnRnYWdlX3BheW1lbnQiLCAidGFibGVSZWZlcmVuY2UiOiB7ImNhdGFsb2ciOiAic2FtcGxlIiwgInNjaGVtYSI6ICJidXJzdGJhbmsiLCAidGFibGUiOiAibW9ydGdhZ2VfcGF5bWVudCJ9LCAiZGVzY3JpcHRpb24iOiAiU3RhcmJ1cnN0IHRhYmxlIHNhbXBsZS5idXJzdGJhbmsubW9ydGdhZ2VfcGF5bWVudCIsICJjb2x1bW5zIjogW3sibmFtZSI6ICJtb3J0Z2FnZV9pZCIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogInBheW1lbnRfZGF0ZSIsICJ0eXBlIjogImRhdGUifSwgeyJuYW1lIjogInBheW1lbnRfYW1vdW50IiwgInR5cGUiOiAiZG91YmxlIn0sIHsibmFtZSI6ICJwYXltZW50X2R1ZV9kYXRlIiwgInR5cGUiOiAiZGF0ZSJ9LCB7Im5hbWUiOiAiZGVsaW5xdWVudF9wYXltZW50IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiYmFsYW5jZSIsICJ0eXBlIjogImRvdWJsZSJ9XX0sIHsibmFtZSI6ICJwcm9kdWN0X3Byb2ZpbGUiLCAidGFibGVSZWZlcmVuY2UiOiB7ImNhdGFsb2ciOiAic2FtcGxlIiwgInNjaGVtYSI6ICJidXJzdGJhbmsiLCAidGFibGUiOiAicHJvZHVjdF9wcm9maWxlIn0sICJkZXNjcmlwdGlvbiI6ICJTdGFyYnVyc3QgdGFibGUgc2FtcGxlLmJ1cnN0YmFuay5wcm9kdWN0X3Byb2ZpbGUiLCAiY29sdW1ucyI6IFt7Im5hbWUiOiAicHJvZmlsZWtleSIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogImN1c3RrZXkiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJjY190eXBlIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiY2NfcmF0ZSIsICJ0eXBlIjogImRvdWJsZSJ9LCB7Im5hbWUiOiAibW9ydGdhZ2Vfb2ZmaWNlciIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogIm1vcnRnYWdlX2R1cmF0aW9uIiwgInR5cGUiOiAiaW50ZWdlciJ9LCB7Im5hbWUiOiAibW9ydGdhZ2VfcmVzaWRlbmNlX3R5cGUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJtb3J0Z2FnZV9wdXJjaGFzZV9wcmljZSIsICJ0eXBlIjogImRvdWJsZSJ9LCB7Im5hbWUiOiAibW9ydGdhZ2VfcmF0ZSIsICJ0eXBlIjogImRvdWJsZSJ9LCB7Im5hbWUiOiAiYXV0b19sb2FuX29mZmljZXIiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJhdXRvX2xvYW5fZHVyYXRpb24iLCAidHlwZSI6ICJpbnRlZ2VyIn0sIHsibmFtZSI6ICJ2ZWhpY2xlX3R5cGUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJhdXRvX3B1cmNoYXNlX3ByaWNlIiwgInR5cGUiOiAiZG91YmxlIn0sIHsibmFtZSI6ICJhdXRvX2xvYW5fcmF0ZSIsICJ0eXBlIjogImRvdWJsZSJ9XX0sIHsibmFtZSI6ICJzdGF0ZV9jZW5zdXMiLCAidGFibGVSZWZlcmVuY2UiOiB7ImNhdGFsb2ciOiAic2FtcGxlIiwgInNjaGVtYSI6ICJidXJzdGJhbmsiLCAidGFibGUiOiAic3RhdGVfY2Vuc3VzIn0sICJkZXNjcmlwdGlvbiI6ICJTdGFyYnVyc3QgdGFibGUgc2FtcGxlLmJ1cnN0YmFuay5zdGF0ZV9jZW5zdXMiLCAiY29sdW1ucyI6IFt7Im5hbWUiOiAic3VtbGV2IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAicmVnaW9uIiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAiZGl2aXNpb24iLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJzdGF0ZSIsICJ0eXBlIjogInZhcmNoYXIifSwgeyJuYW1lIjogIm5hbWUiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJhYmJyZXZpYXRpb24iLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJwb3Blc3RpbWF0ZTIwMTkiLCAidHlwZSI6ICJ2YXJjaGFyIn0sIHsibmFtZSI6ICJwb3Blc3QxOHBsdXMyMDE5IiwgInR5cGUiOiAidmFyY2hhciJ9LCB7Im5hbWUiOiAicGNudF9wb3Blc3QxOHBsdXMiLCAidHlwZSI6ICJ2YXJjaGFyIn1dfV0sICJyZWxhdGlvbnNoaXBzIjogW10sICJtZXRyaWNzIjogW10sICJ2aWV3cyI6IFtdLCAibGF5b3V0VmVyc2lvbiI6IDF9",
+  "connectionInfo": {
+    "host": "https://daljeetsm-free-cluster.trino.galaxy.starburst.io",
+    "port": "443",
+    "catalog": "sample",
+    "schema": "burstbank",
+    "user": "daljeetsm@gmail.com",
+    "password": "dv6bVNxpdMFSVvc"
+  }
+}

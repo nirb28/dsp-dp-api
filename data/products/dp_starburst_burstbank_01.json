@@ -1,0 +1,526 @@
+{
+  "version": "1.0",
+  "project": {
+    "id": "dp_starburst_burstbank_01",
+    "name": "Starburst Burstbank Data Product",
+    "description": "Data product generated from Starburst Cloud sample.burstbank."
+  },
+  "connection": {
+    "type": "trino",
+    "properties": {
+      "host": "https://daljeetsm-free-cluster.trino.galaxy.starburst.io",
+      "port": "443",
+      "catalog": "sample",
+      "schema": "burstbank",
+      "user": "daljeetsm@gmail.com",
+      "password": "dv6bVNxpdMFSVvc"
+    }
+  },
+  "mdl": {
+    "catalog": "sample",
+    "schema": "burstbank",
+    "dataSource": "trino",
+    "models": [
+      {
+        "name": "account",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "account"
+        },
+        "description": "Starburst table sample.burstbank.account",
+        "columns": [
+          {
+            "name": "custkey",
+            "type": "varchar"
+          },
+          {
+            "name": "acctkey",
+            "type": "varchar"
+          },
+          {
+            "name": "products",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_number",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_open_date",
+            "type": "date"
+          },
+          {
+            "name": "cc_closed_date",
+            "type": "date"
+          },
+          {
+            "name": "cc_balance",
+            "type": "double"
+          },
+          {
+            "name": "cc_status",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_default",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_id",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_open_date",
+            "type": "date"
+          },
+          {
+            "name": "mortgage_closed_date",
+            "type": "date"
+          },
+          {
+            "name": "mortgage_balance",
+            "type": "double"
+          },
+          {
+            "name": "mortgage_status",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_default",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_loan_id",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_loan_open_date",
+            "type": "date"
+          },
+          {
+            "name": "auto_loan_closed_date",
+            "type": "date"
+          },
+          {
+            "name": "auto_loan_balance",
+            "type": "double"
+          },
+          {
+            "name": "auto_loan_status",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_loan_default",
+            "type": "varchar"
+          }
+        ]
+      },
+      {
+        "name": "auto_loan_payment",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "auto_loan_payment"
+        },
+        "description": "Starburst table sample.burstbank.auto_loan_payment",
+        "columns": [
+          {
+            "name": "auto_loan_id",
+            "type": "varchar"
+          },
+          {
+            "name": "payment_date",
+            "type": "date"
+          },
+          {
+            "name": "payment_amount",
+            "type": "double"
+          },
+          {
+            "name": "payment_due_date",
+            "type": "date"
+          },
+          {
+            "name": "delinquent_payment",
+            "type": "varchar"
+          },
+          {
+            "name": "balance",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "credit_card_payment",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "credit_card_payment"
+        },
+        "description": "Starburst table sample.burstbank.credit_card_payment",
+        "columns": [
+          {
+            "name": "cc_number",
+            "type": "varchar"
+          },
+          {
+            "name": "payment_date",
+            "type": "date"
+          },
+          {
+            "name": "payment_amount",
+            "type": "double"
+          },
+          {
+            "name": "payment_due_date",
+            "type": "date"
+          },
+          {
+            "name": "delinquent_payment",
+            "type": "varchar"
+          },
+          {
+            "name": "balance",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "customer",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "customer"
+        },
+        "description": "Starburst table sample.burstbank.customer",
+        "columns": [
+          {
+            "name": "custkey",
+            "type": "varchar"
+          },
+          {
+            "name": "first_name",
+            "type": "varchar"
+          },
+          {
+            "name": "last_name",
+            "type": "varchar"
+          },
+          {
+            "name": "street",
+            "type": "varchar"
+          },
+          {
+            "name": "city",
+            "type": "varchar"
+          },
+          {
+            "name": "state",
+            "type": "varchar"
+          },
+          {
+            "name": "postcode",
+            "type": "varchar"
+          },
+          {
+            "name": "country",
+            "type": "varchar"
+          },
+          {
+            "name": "phone",
+            "type": "varchar"
+          },
+          {
+            "name": "dob",
+            "type": "date"
+          },
+          {
+            "name": "gender",
+            "type": "varchar"
+          },
+          {
+            "name": "married",
+            "type": "varchar"
+          },
+          {
+            "name": "ssn",
+            "type": "varchar"
+          },
+          {
+            "name": "paycheck_dd",
+            "type": "varchar"
+          },
+          {
+            "name": "estimated_income",
+            "type": "double"
+          },
+          {
+            "name": "fico",
+            "type": "integer"
+          },
+          {
+            "name": "registration_date",
+            "type": "date"
+          }
+        ]
+      },
+      {
+        "name": "customer_profile",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "customer_profile"
+        },
+        "description": "Starburst table sample.burstbank.customer_profile",
+        "columns": [
+          {
+            "name": "profilekey",
+            "type": "varchar"
+          },
+          {
+            "name": "custkey",
+            "type": "varchar"
+          },
+          {
+            "name": "career",
+            "type": "varchar"
+          },
+          {
+            "name": "professional_status",
+            "type": "varchar"
+          },
+          {
+            "name": "risk_appetite",
+            "type": "varchar"
+          },
+          {
+            "name": "customer_segment",
+            "type": "varchar"
+          }
+        ]
+      },
+      {
+        "name": "employee",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "employee"
+        },
+        "description": "Starburst table sample.burstbank.employee",
+        "columns": [
+          {
+            "name": "employee_id",
+            "type": "varchar"
+          },
+          {
+            "name": "first_name",
+            "type": "varchar"
+          },
+          {
+            "name": "last_name",
+            "type": "varchar"
+          },
+          {
+            "name": "title",
+            "type": "varchar"
+          },
+          {
+            "name": "manger_id",
+            "type": "varchar"
+          },
+          {
+            "name": "start_date",
+            "type": "date"
+          },
+          {
+            "name": "street",
+            "type": "varchar"
+          },
+          {
+            "name": "city",
+            "type": "varchar"
+          },
+          {
+            "name": "state",
+            "type": "varchar"
+          },
+          {
+            "name": "postcode",
+            "type": "varchar"
+          },
+          {
+            "name": "country",
+            "type": "varchar"
+          },
+          {
+            "name": "phone",
+            "type": "varchar"
+          },
+          {
+            "name": "dob",
+            "type": "date"
+          }
+        ]
+      },
+      {
+        "name": "mortgage_payment",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "mortgage_payment"
+        },
+        "description": "Starburst table sample.burstbank.mortgage_payment",
+        "columns": [
+          {
+            "name": "mortgage_id",
+            "type": "varchar"
+          },
+          {
+            "name": "payment_date",
+            "type": "date"
+          },
+          {
+            "name": "payment_amount",
+            "type": "double"
+          },
+          {
+            "name": "payment_due_date",
+            "type": "date"
+          },
+          {
+            "name": "delinquent_payment",
+            "type": "varchar"
+          },
+          {
+            "name": "balance",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "product_profile",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "product_profile"
+        },
+        "description": "Starburst table sample.burstbank.product_profile",
+        "columns": [
+          {
+            "name": "profilekey",
+            "type": "varchar"
+          },
+          {
+            "name": "custkey",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_type",
+            "type": "varchar"
+          },
+          {
+            "name": "cc_rate",
+            "type": "double"
+          },
+          {
+            "name": "mortgage_officer",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_duration",
+            "type": "integer"
+          },
+          {
+            "name": "mortgage_residence_type",
+            "type": "varchar"
+          },
+          {
+            "name": "mortgage_purchase_price",
+            "type": "double"
+          },
+          {
+            "name": "mortgage_rate",
+            "type": "double"
+          },
+          {
+            "name": "auto_loan_officer",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_loan_duration",
+            "type": "integer"
+          },
+          {
+            "name": "vehicle_type",
+            "type": "varchar"
+          },
+          {
+            "name": "auto_purchase_price",
+            "type": "double"
+          },
+          {
+            "name": "auto_loan_rate",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "state_census",
+        "tableReference": {
+          "catalog": "sample",
+          "schema": "burstbank",
+          "table": "state_census"
+        },
+        "description": "Starburst table sample.burstbank.state_census",
+        "columns": [
+          {
+            "name": "sumlev",
+            "type": "varchar"
+          },
+          {
+            "name": "region",
+            "type": "varchar"
+          },
+          {
+            "name": "division",
+            "type": "varchar"
+          },
+          {
+            "name": "state",
+            "type": "varchar"
+          },
+          {
+            "name": "name",
+            "type": "varchar"
+          },
+          {
+            "name": "abbreviation",
+            "type": "varchar"
+          },
+          {
+            "name": "popestimate2019",
+            "type": "varchar"
+          },
+          {
+            "name": "popest18plus2019",
+            "type": "varchar"
+          },
+          {
+            "name": "pcnt_popest18plus",
+            "type": "varchar"
+          }
+        ]
+      }
+    ],
+    "relationships": [],
+    "metrics": [],
+    "views": []
+  },
+  "sql_pairs": [],
+  "created_at": "2026-05-09T23:41:14.812957Z",
+  "updated_at": "2026-05-10T00:15:25.286169Z",
+  "status": "deployed",
+  "mdl_hash": "956db58d3e8ae22820d04665a6f9b6e095a2c066746a073287de9fa110936b12",
+  "error": null
+}

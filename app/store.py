@@ -65,6 +65,10 @@ class ManifestRegistry:
         connection_info = dict(record.connection.properties)
         if "port" in connection_info and connection_info["port"] is not None:
             connection_info["port"] = str(connection_info["port"])
+        if record.connection.type == "trino":
+            protocol = connection_info.pop("protocol", None)
+            if protocol:
+                connection_info.setdefault("kwargs", {})["http_scheme"] = protocol
         payload = {
             "source": record.connection.type,
             "manifest": manifest,
